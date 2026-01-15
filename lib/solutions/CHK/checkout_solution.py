@@ -2,15 +2,16 @@ import pytest
 class CheckoutSolution:
 
     def computeTotal(self, item, itemNumber):
-        prices = {"A": 50, "B": 30, "C": 20, "D": 15}
-        discounts = {"A": True, "B": True, "C": False, "D": False}
-        amountForDiscount = {"A": 3, "B": 2, "C": 0, "D": 0}
-        offerPrice = {"A": 130, "B": 45, "C": 0, "D": 0}
+        prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
+        discounts = {"A": True, "B": True, "C": False, "D": False, "E": True}
+        amountForDiscount = {"A": [5,3], "B": [2], "C": [0], "D": [0], "E" : [2]}
+        offerPrice = {"A": 130, "B": 45, "C": 0, "D": 0, "E": -45}
         runningTotal = 0
         discountItems = 0
 
         #Compute discount if any per item
         if discounts[item] == True:
+            
             discountItems = itemNumber // amountForDiscount[item]
             itemNumber -= (discountItems * amountForDiscount[item])
             runningTotal += offerPrice[item] * discountItems
@@ -30,7 +31,7 @@ class CheckoutSolution:
             #if "" or 0 then return 0
             if len(items) == 0 or (all(item in {""} for item in items)):
                 return 0
-            elif ((len(items) != 0) and (all(item in {"A", "B", "C", "D"} and item != "" for item in items))):
+            elif ((len(items) != 0) and (all(item in {"A", "B", "C", "D", "E"} and item != "" for item in items))):
                 #count number of items
                 item_counts = {}
                 for i in items:
@@ -80,4 +81,5 @@ def test_empty_string(checkout):
 
 def test_erroneous(checkout):
     assert checkout.checkout("A ") == -1
+
 
