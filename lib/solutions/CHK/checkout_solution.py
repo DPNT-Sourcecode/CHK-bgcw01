@@ -24,24 +24,51 @@ class CheckoutSolution:
 
     def checkout(self, skus):
         items = list(skus)
-
-        #count number of items
-        item_counts = {}
-        for i in items:
-            if i in  item_counts:
-                item_counts[i] +=1
-            else:
-                item_counts[i] = 1
         total = 0
-        #total depending on number and sales
-        #for length of dict
-        for item in item_counts:
-            total += self.computeTotal(item, item_counts[item])
 
+        if len(items) != 0:
+            #count number of items
+            item_counts = {}
+            for i in items:
+                if i in  item_counts:
+                    item_counts[i] +=1
+                else:
+                    item_counts[i] = 1
+
+            #total depending on number and sales
+            #for length of dict
+            for item in item_counts:
+                total += self.computeTotal(item, item_counts[item])
+
+        return total
+
+####------------tests
 def checkout():
     return CheckoutSolution()
 
-def
+def test_one(checkout):
+    assert checkout.checkout("A") == 50
+    assert checkout.checkout("A") == 30
+    assert checkout.checkout("A") == 20
+    assert checkout.checkout("A") == 15
+
+def test_multi_no_discount(checkout):
+    assert checkout.checkout("AB") == 80
+    assert checkout.checkout("ACD") == 85
+    assert checkout.checkout("BCD") == 65
+
+def test_multi_discount(checkout):
+    assert checkout.checkout("AAA") == 130
+    assert checkout.checkout("AAAA") == 180
+
+def test_mixed_items(checkout):
+    assert checkout.checkout("AAAB") == 160
+    assert checkout.checkout("AABBB") == 175
+    assert checkout.checkout("AAABB") == 175
+
+def test_empty_string(checkout):
+    assert checkout.checkout("") == 0
+
 
 
 
