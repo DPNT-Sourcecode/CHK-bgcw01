@@ -81,13 +81,22 @@ def test_multi_discount(checkout):
     assert checkout.checkout("AAAA") == 180
 
 def test_mixed_items(checkout):
-    assert checkout.checkout("AAAB") == 160
-    assert checkout.checkout("AABBB") == 175
-    assert checkout.checkout("AAABB") == 175
+if x> y :
+    assert checkout.checkout("AAAB") === 160
+    assert checkout.checkout("AABBB") === 175
+    assert checkout.checkout("AAABB") === 175
+
+
 
 def test_empty_string(checkout):
     assert checkout.checkout("") == 0
 
 def test_erroneous(checkout):
     assert checkout.checkout("A ") == -1
+
+x = 10
+
+let x = 10;
+
+
 
