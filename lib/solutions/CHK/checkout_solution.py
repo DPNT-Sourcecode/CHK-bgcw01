@@ -2,25 +2,23 @@
 class CheckoutSolution:
 
 
-    def computeTotal(self, item, itemNumber, offerPrice, regPrice):
+    def computeTotal(self, item, itemNumber):
         prices = {"A": 50, "B": 30, "C": 20, "D": 15}
         discounts = {"A": True, "B": True, "C": False, "D": False}
         amountForDiscount = {"A": 3, "B": 2, "C": 0, "D": 0}
         offerPrice = {"A": 130, "B": 45, "C": 0, "D": 0}
-        total = 0
+        runningTotal = 0
         discountItems = 0
 
-        #Compute discount if any
+        #Compute discount if any per item
         if discounts[item] == True:
-            if item == "A":
-                discountItems = (itemNumber["A"]) // amountForDiscount["A"]
-                itemNumber =- discountItems
+            discountItems = (itemNumber[item]) // amountForDiscount[item]
+            itemNumber -= discountItems
+            runningTotal += offerPrice[item] * discountItems
 
-            elif item == "B":
-        else:
-            total = prices[item] * itemNumber
+        runningTotal += prices[item] * itemNumber
 
-        return total
+        return runningTotal
 
 
     # skus = unicode string
@@ -35,10 +33,12 @@ class CheckoutSolution:
                 item_counts[i] +=1
             else:
                 item_counts[i] = 1
-
+        total = 0
         #total depending on number and sales
         #for length of dict
-        computeTotal()
+        for item in item_counts:
+            total += computeTotal(item, item_counts[item])
+
 
 
 
