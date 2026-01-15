@@ -1,7 +1,7 @@
 
 class CheckoutSolution:
-    def computeDiscount(self, item, offer, offerPrice, regPrice):
-        
+    def computeDiscount(self, itemNum, offer, offerPrice, regPrice):
+        numOfDiscoun = (items_counts["A"]) // offer
     # skus = unicode string
 
     def checkout(self, skus):
@@ -15,8 +15,10 @@ class CheckoutSolution:
                 item_counts[i] = 1
 
         #total depending on number and sales
+        computeDiscount()
 
-        numOfADiscounts = (items_counts["A"]) // 3
+
+
 
 
 
