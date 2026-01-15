@@ -12,7 +12,7 @@ class CheckoutSolution:
         #Compute discount if any per item
         if discounts[item] == True:
             discountItems = itemNumber // amountForDiscount[item]
-            itemNumber -= discountItems
+            itemNumber -= (discountItems * amountForDiscount[item])
             runningTotal += offerPrice[item] * discountItems
 
         runningTotal += prices[item] * itemNumber
@@ -69,6 +69,7 @@ def test_mixed_items(checkout):
 
 def test_empty_string(checkout):
     assert checkout.checkout("") == 0
+
 
 
 
