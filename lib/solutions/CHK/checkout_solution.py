@@ -13,8 +13,9 @@ class CheckoutSolution:
                 item_counts[i] = 1
 
         #total depending on number and sales
-        for i in item_counts:
-            if 
+
+            numOfDiscounts = items_counts['A']
+
 
 
 
