@@ -23,9 +23,11 @@ class CheckoutSolution:
     # skus = unicode string
 
     def checkout(self, skus):
-        items = list(skus)
-        total = 0
+
         if isinstance(skus, str):
+            items = skus.upper()
+            items = list(items)
+            total = 0
             if len(items) != 0:
                 #count number of items
                 item_counts = {}
@@ -71,6 +73,7 @@ def test_mixed_items(checkout):
 
 def test_empty_string(checkout):
     assert checkout.checkout("") == 0
+
 
 
 
