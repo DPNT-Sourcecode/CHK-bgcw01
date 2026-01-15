@@ -25,22 +25,24 @@ class CheckoutSolution:
     def checkout(self, skus):
         items = list(skus)
         total = 0
+        if isinstance(skus, str):
+            if len(items) != 0:
+                #count number of items
+                item_counts = {}
+                for i in items:
+                    if i in  item_counts:
+                        item_counts[i] +=1
+                    else:
+                        item_counts[i] = 1
 
-        if len(items) != 0:
-            #count number of items
-            item_counts = {}
-            for i in items:
-                if i in  item_counts:
-                    item_counts[i] +=1
-                else:
-                    item_counts[i] = 1
+                #total depending on number and sales
+                #for length of dict
+                for item in item_counts:
+                    total += self.computeTotal(item, item_counts[item])
 
-            #total depending on number and sales
-            #for length of dict
-            for item in item_counts:
-                total += self.computeTotal(item, item_counts[item])
-
-        return total
+            return total
+        else:
+            return -1
 
 ####------------tests
 @pytest.fixture
@@ -69,6 +71,7 @@ def test_mixed_items(checkout):
 
 def test_empty_string(checkout):
     assert checkout.checkout("") == 0
+
 
 
 
