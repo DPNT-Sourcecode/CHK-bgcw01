@@ -81,7 +81,3 @@ def test_empty_string(checkout):
 def test_erroneous(checkout):
     assert checkout.checkout("A ") == -1
 
-
-
-
-
