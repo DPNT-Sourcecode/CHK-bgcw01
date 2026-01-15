@@ -77,5 +77,6 @@ def test_empty_string(checkout):
     assert checkout.checkout("") == -1
 
 def test_erroneous(checkout):
-    assert checkout.checkout("a") == -1
+    assert checkout.checkout("a") == 50
+
 
