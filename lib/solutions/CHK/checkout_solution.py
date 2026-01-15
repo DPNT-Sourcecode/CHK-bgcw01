@@ -25,8 +25,7 @@ class CheckoutSolution:
     def checkout(self, skus):
 
         if isinstance(skus, str):
-            items = skus.upper()
-            items = list(items)
+            items = list(skus)
             total = 0
             if ((len(items) != 0) and (all(item in {"A", "B", "C", "D"} for item in items))):
                 #count number of items
@@ -77,6 +76,7 @@ def test_empty_string(checkout):
     assert checkout.checkout("") == -1
 
 def test_erroneous(checkout):
-    assert checkout.checkout("a") == 50
+    assert checkout.checkout("a") == -1
+
 
 
