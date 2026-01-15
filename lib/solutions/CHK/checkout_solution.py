@@ -1,20 +1,27 @@
 import pytest
 class CheckoutSolution:
 
-    def computeTotal(self, item, itemNumber):
+    def computeTotal(self, item, itemNumber, numOfBs):
         prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
         discounts = {"A": True, "B": True, "C": False, "D": False, "E": True}
         amountForDiscount = {"A": [5,3], "B": [2], "C": [0], "D": [0], "E" : [2]}
-        offerPrice = {"A": 130, "B": 45, "C": 0, "D": 0, "E": -45}
+        offerPrice = {"A5": 500, "A3": 130, "B2": 45, "C": 0, "D": 0, "E2": -45}
         runningTotal = 0
         discountItems = 0
 
         #Compute discount if any per item
+        #assume
+        bestIndex = 0
         if discounts[item] == True:
-            
-            discountItems = itemNumber // amountForDiscount[item]
-            itemNumber -= (discountItems * amountForDiscount[item])
-            runningTotal += offerPrice[item] * discountItems
+            for i in range(0, len(amountForDiscount[item])):
+                discountItems = itemNumber // amountForDiscount[item][i]
+                if discountItems != 0:
+                    break
+            if item == "E":
+                if numOfBs
+            itemNumber -= (discountItems * amountForDiscount[item][bestIndex])
+            key = item + bestIndex
+            runningTotal += offerPrice[key] * discountItems
 
         runningTotal += prices[item] * itemNumber
 
@@ -81,5 +88,6 @@ def test_empty_string(checkout):
 
 def test_erroneous(checkout):
     assert checkout.checkout("A ") == -1
+
 
 
