@@ -27,7 +27,10 @@ class CheckoutSolution:
         if isinstance(skus, str):
             items = list(skus)
             total = 0
-            if ((len(items) != 0) and (all(item in {"A", "B", "C", "D"} and item != "" for item in items))):
+            #if "" or 0 then return 0
+            if len(items) == 0 or (all(item in {""} for item in items)):
+                return 0
+            elif ((len(items) != 0) and (all(item in {"A", "B", "C", "D"} and item != "" for item in items))):
                 #count number of items
                 item_counts = {}
                 for i in items:
@@ -73,10 +76,11 @@ def test_mixed_items(checkout):
     assert checkout.checkout("AAABB") == 175
 
 def test_empty_string(checkout):
-    assert checkout.checkout("") == -1
+    assert checkout.checkout("") == 0
 
 def test_erroneous(checkout):
-    assert checkout.checkout("a") == -1
+    assert checkout.checkout("A ") == -1
+
 
 
 
