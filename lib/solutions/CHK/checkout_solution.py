@@ -38,8 +38,11 @@ class CheckoutSolution:
         for item in item_counts:
             total += self.computeTotal(item, item_counts[item])
 
+def checkout():
+    return CheckoutSolution()
 
-assert 
+def
+
 
 
 
