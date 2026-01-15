@@ -11,7 +11,7 @@ class CheckoutSolution:
 
         #Compute discount if any per item
         if discounts[item] == True:
-            discountItems = (itemNumber[item]) // amountForDiscount[item]
+            discountItems = itemNumber // amountForDiscount[item]
             itemNumber -= discountItems
             runningTotal += offerPrice[item] * discountItems
 
@@ -43,14 +43,15 @@ class CheckoutSolution:
         return total
 
 ####------------tests
+@pytest.fixture
 def checkout():
     return CheckoutSolution()
 
 def test_one(checkout):
     assert checkout.checkout("A") == 50
-    assert checkout.checkout("A") == 30
-    assert checkout.checkout("A") == 20
-    assert checkout.checkout("A") == 15
+    assert checkout.checkout("B") == 30
+    assert checkout.checkout("C") == 20
+    assert checkout.checkout("D") == 15
 
 def test_multi_no_discount(checkout):
     assert checkout.checkout("AB") == 80
@@ -68,6 +69,7 @@ def test_mixed_items(checkout):
 
 def test_empty_string(checkout):
     assert checkout.checkout("") == 0
+
 
 
 
