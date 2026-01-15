@@ -28,7 +28,7 @@ class CheckoutSolution:
             items = skus.upper()
             items = list(items)
             total = 0
-            if len(items) != 0:
+            if ((len(items) != 0) and (all(item in {"A", "B", "C", "D"} for item in items))):
                 #count number of items
                 item_counts = {}
                 for i in items:
@@ -42,7 +42,9 @@ class CheckoutSolution:
                 for item in item_counts:
                     total += self.computeTotal(item, item_counts[item])
 
-            return total
+                return total
+            else:
+                return -1
         else:
             return -1
 
@@ -72,13 +74,8 @@ def test_mixed_items(checkout):
     assert checkout.checkout("AAABB") == 175
 
 def test_empty_string(checkout):
-    assert checkout.checkout("") == 0
+    assert checkout.checkout("") == -1
 
-
-
-
-
-
-
-
+def test_erroneous(checkout):
+    assert checkout.checkout("a") == -1
 
