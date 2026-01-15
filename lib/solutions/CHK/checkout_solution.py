@@ -1,7 +1,9 @@
 
 class CheckoutSolution:
-
+    def computeDiscount(self, item, offer, offerPrice, regPrice):
+        
     # skus = unicode string
+
     def checkout(self, skus):
         items = list(skus)
         #count number of items
@@ -14,10 +16,7 @@ class CheckoutSolution:
 
         #total depending on number and sales
 
-            numOfDiscounts = items_counts['A']
-
-
-
+        numOfADiscounts = (items_counts["A"]) // 3
 
 
 
