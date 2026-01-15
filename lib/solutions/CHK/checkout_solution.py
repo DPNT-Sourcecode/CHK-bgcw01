@@ -10,15 +10,17 @@ class CheckoutSolution:
         discountItems = 0
 
         #Compute discount if any per item
-        #assume
         bestIndex = 0
+
+        #check if
         if discounts[item] == True:
             for i in range(0, len(amountForDiscount[item])):
                 discountItems = itemNumber // amountForDiscount[item][i]
                 if discountItems != 0:
                     break
             if item == "E":
-                if numOfBs
+                if (numOfBs % 2) != 0:
+                    runningTotal
             itemNumber -= (discountItems * amountForDiscount[item][bestIndex])
             key = item + bestIndex
             runningTotal += offerPrice[key] * discountItems
@@ -88,6 +90,7 @@ def test_empty_string(checkout):
 
 def test_erroneous(checkout):
     assert checkout.checkout("A ") == -1
+
 
 
 
